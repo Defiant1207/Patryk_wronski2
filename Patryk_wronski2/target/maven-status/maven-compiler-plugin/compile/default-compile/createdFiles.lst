@@ -1,0 +1,10 @@
+Kolejka\Kolejka.class
+Simulation.class
+Kreator_procesow\AKreator.class
+Kreator_procesow\Kreator.class
+Procesy\Procesy.class
+Procesy\IProcesy.class
+Procesy\AProcesy.class
+Kolejka\IKolejka.class
+Kreator_procesow\IKreator.class
+Kolejka\AKolejka.class
