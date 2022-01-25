@@ -42,4 +42,6 @@ public interface IKolejka {
     double[] waitingTime();
 
     void fn();
+
+    void wyswietl(int i);
 }

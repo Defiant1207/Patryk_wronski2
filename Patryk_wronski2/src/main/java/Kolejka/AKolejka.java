@@ -91,7 +91,9 @@ public abstract class AKolejka implements IKolejka {
             prioSort(t, i);
             int prio = fn2();
             procesy2[i] = kolejka.get(prio);
+            wyswietl(i);
             kolejka.remove(prio);
+
             if (procesy2[i].getA() < t) {
                 t += procesy2[i].getP();
             } else {
@@ -99,9 +101,10 @@ public abstract class AKolejka implements IKolejka {
             }
             for (int j = 0; j < kolejka.size(); j++) {
                 if (kolejka.get(j).getP() > kwant_czasu) {
-                    kolejka.get(j).increasePrio((1));
+                    kolejka.get(j).increasePrio((-1));
                 }
             }
+
         }
     }
 
@@ -113,7 +116,6 @@ public abstract class AKolejka implements IKolejka {
                     kolejka.add(procesy1[i]);
                     procesy1[i] = null;
                 }
-
             }
         }
         if (procesy1[x] != null && procesy1[x].getA() > t) {
@@ -124,12 +126,12 @@ public abstract class AKolejka implements IKolejka {
 
     @Override
     public int fn2() {
-        double max = kolejka.get(0).getPrio();
+        double min = kolejka.get(0).getPrio();
         int position = 0;
         if (kolejka.size() > 1) {
             for (int i = 1; i < kolejka.size(); i++) {
-                if (kolejka.get(i).getPrio() > max) {
-                    max = kolejka.get(i).getPrio();
+                if (kolejka.get(i).getPrio() < min) {
+                    min = kolejka.get(i).getPrio();
                     position = i;
                 }
             }
@@ -163,5 +165,24 @@ public abstract class AKolejka implements IKolejka {
         tab[0] = a;
         tab[1] = P;
         return tab;
+    }
+
+    @Override
+    public void wyswietl(int i) {
+        System.out.println("Wybrany proces: " + procesy2[i].getP());
+        System.out.println();
+        for (int j = 0; j < kolejka.size(); j++) {
+            System.out.print(kolejka.get(j).getA() + " ");
+        }
+        System.out.println("a w kolejce");
+        for (int j = 0; j < kolejka.size(); j++) {
+            System.out.print(kolejka.get(j).getP() + " ");
+        }
+        System.out.println("p w kolejce");
+        for (int j = 0; j < kolejka.size(); j++) {
+            System.out.print(kolejka.get(j).getPrio() + " ");
+        }
+        System.out.println("prio w kolejce");
+        System.out.println();
     }
 }
